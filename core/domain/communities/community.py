@@ -5,7 +5,7 @@ from core.domain.common.base_entity import BaseEntity
 
 class Community(BaseEntity):
     """
-    Representa una comunidad administrada por Onyxia.
+    Comunidad administrada por Onyxia.
     """
 
     def __init__(
@@ -22,7 +22,18 @@ class Community(BaseEntity):
         self.buyers = []
 
     def add_model(self, model):
-        self.models.append(model)
+        if model not in self.models:
+            self.models.append(model)
 
     def add_buyer(self, buyer):
-        self.buyers.append(buyer)
+        if buyer not in self.buyers:
+            self.buyers.append(buyer)
+
+    def total_models(self):
+        return len(self.models)
+
+    def total_buyers(self):
+        return len(self.buyers)
+
+    def total_members(self):
+        return len(self.models) + len(self.buyers)
