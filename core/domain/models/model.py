@@ -54,4 +54,4 @@ class Model(User):
         self.status = ModelStatus.BANNED
 
     def set_profile(self, profile: ModelProfile):
-        self.profile = profile
+        self.profile = profile  
