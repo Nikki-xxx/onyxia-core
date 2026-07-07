@@ -1,12 +1,10 @@
 from __future__ import annotations
 
+from core.domain.buyers.buyer_status import BuyerStatus
 from core.domain.users.user import User
 
 
 class Buyer(User):
-    """
-    Comprador del ecosistema.
-    """
 
     def __init__(
         self,
@@ -19,3 +17,5 @@ class Buyer(User):
             username,
             first_name,
         )
+
+        self.status = BuyerStatus.ACTIVE
