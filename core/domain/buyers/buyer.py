@@ -5,8 +5,17 @@ from core.domain.users.user import User
 
 class Buyer(User):
     """
-    Representa un comprador dentro del ecosistema.
+    Comprador del ecosistema.
     """
 
-    def __init__(self):
-        super().__init__()
+    def __init__(
+        self,
+        telegram_id: int,
+        username: str | None = None,
+        first_name: str | None = None,
+    ):
+        super().__init__(
+            telegram_id,
+            username,
+            first_name,
+        )
