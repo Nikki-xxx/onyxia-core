@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from core.domain.common.exceptions import DomainException
 from core.domain.models.model_profile import ModelProfile
+from core.domain.models.model_review import ModelReview
 from core.domain.models.model_status import ModelStatus
 from core.domain.users.user import User
 
@@ -25,6 +26,7 @@ class Model(User):
 
         self.status = ModelStatus.PENDING
         self.profile: ModelProfile | None = None
+        self.review: ModelReview | None = None
 
     def verify(self):
         if self.status != ModelStatus.PENDING:
@@ -54,4 +56,7 @@ class Model(User):
         self.status = ModelStatus.BANNED
 
     def set_profile(self, profile: ModelProfile):
-        self.profile = profile  
+        self.profile = profile
+
+    def set_review(self, review: ModelReview):
+        self.review = review

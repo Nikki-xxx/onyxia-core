@@ -1,15 +1,20 @@
+from __future__ import annotations
+
 from datetime import datetime
 
 
 class ModelReview:
+    """
+    Representa la revisión administrativa de una solicitud.
+    """
 
     def __init__(
         self,
-        approved: bool,
         reviewer: str,
-        reason: str = "",
+        approved: bool,
+        reason: str | None = None,
     ):
-        self.approved = approved
         self.reviewer = reviewer
+        self.approved = approved
         self.reason = reason
         self.reviewed_at = datetime.utcnow()
