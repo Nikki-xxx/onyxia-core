@@ -1,17 +1,21 @@
 from __future__ import annotations
 
+from core.domain.common.exceptions import DomainException
+from core.domain.models.model_profile import ModelProfile
 from core.domain.models.model_status import ModelStatus
 from core.domain.users.user import User
-from core.domain.common.exceptions import DomainException
 
 
 class Model(User):
+    """
+    Representa una modelo dentro del ecosistema Onyxia.
+    """
 
     def __init__(
         self,
         telegram_id: int,
         username: str | None = None,
-        first_name: str |None = None,
+        first_name: str | None = None,
     ):
         super().__init__(
             telegram_id,
@@ -20,6 +24,7 @@ class Model(User):
         )
 
         self.status = ModelStatus.PENDING
+        self.profile: ModelProfile | None = None
 
     def verify(self):
         if self.status != ModelStatus.PENDING:
@@ -47,3 +52,6 @@ class Model(User):
 
     def ban(self):
         self.status = ModelStatus.BANNED
+
+    def set_profile(self, profile: ModelProfile):
+        self.profile = profile
